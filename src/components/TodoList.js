@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import todos from '../mocks/todos';
+import {filters, todos} from '../mocks/mock_data';
 
+import Filters from './Filters';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 
@@ -14,23 +15,30 @@ const Wrapper = styled.div`
 `;
 
 const ListContainer = styled.div`
-  height: 70%;
+  height: 610px;
   margin-top: 20px;
   overflow: auto;
+  padding: 0 10px;
 `;
 
 class TodoList extends Component {
   state = {
     todos,
+    filter: filters.ALL,
   }
 
   addTodo = (newTodo) => {
-    this.setState((state) => ({
-      todos: state.todos.push({
+    this.setState((state) => {
+      const updatedTodos = [...this.state.todos];
+      updatedTodos.push({
         todo: newTodo,
         completed: false
-      }),
-    }))
+      });
+
+      return ({
+        todos: updatedTodos,
+      })
+    })
   }
 
   markComplete = (event) => {
@@ -43,12 +51,22 @@ class TodoList extends Component {
     }))
   }
 
+  setFilter = (filter) => {
+    this.setState({filter});
+  }
+
   render() {
-    const {todos} = this.state;
+    const {filter, todos} = this.state;
 
     return (
       <Wrapper>
         <TodoForm addTodo={this.addTodo} />
+
+        <Filters
+          activeFilter={filter}
+          setFilter={this.setFilter}
+        />
+
         <ListContainer>
           {
             todos.map((todo, index) => (

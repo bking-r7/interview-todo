@@ -1,4 +1,4 @@
-export default [
+export const todos = [
   {
     todo: 'Buy milk',
     completed: false,
@@ -20,3 +20,9 @@ export default [
     completed: true,
   }
 ]
+
+export const filters = {
+  ALL: 'All',
+  COMPLETE: 'Complete',
+  INCOMPLETE: 'Incomplete',
+}
