@@ -7,8 +7,12 @@ To get started, make a new branch off master to which you will be committing you
 
 ## Code Changes
 A few things aren't hooked up or are broken, we will walk through getting these resolved. Files to review for required changes
+
 1 - TodoList.js
+
 2 - Filters.js
+
+Obviously the other files can be used as context and reference
 
 ## Tests
 In the file TodoList.test.js, we need to write a test to ensure that the list of todo items are being rendered.
