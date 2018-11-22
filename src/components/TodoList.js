@@ -22,12 +22,13 @@ const ListContainer = styled.div`
 `;
 
 class TodoList extends Component {
+
   state = {
     todos,
     filter: filters.ALL,
   }
 
-  addTodo(newTodo) {
+  addTodo = (newTodo) => {
     this.setState((state) => {
       const updatedTodos = [...this.state.todos];
       updatedTodos.push({
@@ -43,6 +44,13 @@ class TodoList extends Component {
 
   markComplete = (event) => {
     //TODO implement
+    const todoName = event.target.value;
+
+    this.setState((state) => ({
+      todos: state.todos.map(item => {
+        return (item.todo === todoName) ? { todo: item.todo, completed: true} : item;
+      })
+    }))
   }
 
   removeTodo = (name) => {
