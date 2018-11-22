@@ -7,8 +7,6 @@ import {filters} from '../mocks/mock_data';
 const FilterWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 400px;
 `;
 
 const FilterButton = styled.div`
@@ -19,10 +17,8 @@ const FilterButton = styled.div`
   cursor: pointer;
   display: flex;
   font-size: 14px;
-  height: 40px;
   justify-content: center;
   text-transform: uppercase;
-  width: 31%;
 
   &.active {
     background: white;

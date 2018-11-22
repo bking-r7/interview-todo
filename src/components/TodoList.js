@@ -27,7 +27,7 @@ class TodoList extends Component {
     filter: filters.ALL,
   }
 
-  addTodo = (newTodo) => {
+  addTodo(newTodo) {
     this.setState((state) => {
       const updatedTodos = [...this.state.todos];
       updatedTodos.push({
@@ -52,7 +52,7 @@ class TodoList extends Component {
   }
 
   setFilter = (filter) => {
-    this.setState({filter});
+    // TODO implement
   }
 
   render() {
