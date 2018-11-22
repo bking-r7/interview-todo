@@ -61,6 +61,7 @@ class TodoList extends Component {
 
   setFilter = (filter) => {
     // TODO implement
+    this.setState({filter})
   }
 
   render() {
@@ -77,14 +78,21 @@ class TodoList extends Component {
 
         <ListContainer>
           {
-            todos.map((todo, index) => (
-              <TodoItem
-                key={`${todo.todo}-${index}`}
-                markComplete={this.markComplete}
-                removeTodo={this.removeTodo}
-                todo={todo}
-              />
-            ))
+            todos.map((todo, index) => {
+
+              if((todo.completed && filter === "Complete") || filter === "All" || (!todo.completed && filter === "Incomplete")) {
+                return(
+                  <TodoItem
+                    key={`${todo.todo}-${index}`}
+                    markComplete={this.markComplete}
+                    removeTodo={this.removeTodo}
+                    todo={todo}
+                  />
+                )
+              }
+              // return null
+
+            })
           }
         </ListContainer>
       </Wrapper>

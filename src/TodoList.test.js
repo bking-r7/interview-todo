@@ -35,4 +35,7 @@ it('renders an input with the ', () => {
 
 it('renders the todo list names', () => {
   //TODO Implement test to check for the preloaded todos as list above
+  const {getByText} = render(<TodoList/>);
+  
+  expect(getByText('workout')).toBeTruthy();
 });
