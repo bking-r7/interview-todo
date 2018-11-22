@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import {filters} from '../mocks/mock_data';
 
+//TODO update styling here 
 const FilterWrapper = styled.div`
   display: flex;
   flex-direction: row;
