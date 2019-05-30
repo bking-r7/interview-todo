@@ -42,7 +42,20 @@ class TodoList extends Component {
   }
 
   markComplete = (event) => {
-    //TODO implement
+    const {value, checked} = event.currentTarget;
+
+    this.setState((state) => {
+      const updatedTodo = this.state.todos.find((t) => t.todo === value);
+      if (!updatedTodo) {
+        return state;
+      }
+
+      const newState =  this.state.todos.filter((todo) => todo !== value)
+      updatedTodo.completed = checked
+      newState.push(updatedTodo);
+
+      return newState;
+    })
   }
 
   removeTodo = (name) => {
@@ -52,11 +65,26 @@ class TodoList extends Component {
   }
 
   setFilter = (filter) => {
-    // TODO implement
+    this.setState({filter});
+  }
+
+  getFilteredTodos = () => {
+    const {filter, todos} = this.state;
+
+    return todos.filter((item) => {
+      if (filter === filters.COMPLETE) {
+        return item.completed
+      }
+      if (filter === filters.INCOMPLETE) {
+        return !item.completed
+      }
+      return true;
+    });
   }
 
   render() {
-    const {filter, todos} = this.state;
+    const {filter} = this.state;
+    const filteredTodos = this.getFilteredTodos();
 
     return (
       <Wrapper>
@@ -69,7 +97,7 @@ class TodoList extends Component {
 
         <ListContainer>
           {
-            todos.map((todo, index) => (
+            filteredTodos.map((todo, index) => (
               <TodoItem
                 key={`${todo.todo}-${index}`}
                 markComplete={this.markComplete}

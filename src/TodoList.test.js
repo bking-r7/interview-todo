@@ -34,5 +34,11 @@ it('renders an input with the ', () => {
 
 
 it('renders the todo list names', () => {
-  //TODO Implement test to check for the preloaded todos as list above
+  const {getByText} = render(<TodoList/>);
+
+  expect(getByText('Buy milk')).toBeTruthy();
+  expect(getByText('Clean windows')).toBeTruthy();
+  expect(getByText('workout')).toBeTruthy();
+  expect(getByText('do laundry')).toBeTruthy();
+  expect(getByText('Go to post office')).toBeTruthy();
 });

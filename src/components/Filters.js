@@ -4,10 +4,14 @@ import styled from 'styled-components';
 
 import {filters} from '../mocks/mock_data';
 
-//TODO update styling here 
+// Styles here dont need to be identical to this
+// but should improve the aesthetic of the filter buttons
 const FilterWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 100%;
 `;
 
 const FilterButton = styled.div`
@@ -18,8 +22,10 @@ const FilterButton = styled.div`
   cursor: pointer;
   display: flex;
   font-size: 14px;
+  height: 30px;
   justify-content: center;
   text-transform: uppercase;
+  width: 30%;
 
   &.active {
     background: white;
